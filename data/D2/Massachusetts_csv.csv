@@ -1,0 +1,24 @@
+﻿State Renewable Electricity Profiles 2010,,,,,
+Release Date: March 2012,,,,,
+Next Release Date: January 2013,,,,,
+,,,,,
+"Table 5. State Renewable Electric Power Industry Net Generation, by Energy Source, 2006 - 2010",,,,,
+(Thousand Megawatthours),,,,,
+,,,,,
+Massachusetts,,,,,
+,,,,,
+Energy Source,2006,2007,2008,2009,2010
+,,,,,
+Geothermal,-,-,-,-,-
+Hydro Conventional,"1,513",797,"1,156","1,201",996
+Solar,-,-,s,s,1
+Wind,-,-,4,6,22
+Wood/Wood Waste,125,119,123,115,125
+MSW Biogenic/Landfill Gas,"1,126","1,094","1,128","1,104","1,125"
+Other Biomass,27,27,2,4,1
+Total,"2,791","2,038","2,411","2,430","2,270"
+ ,,,,,
+"s = Value is less than 0.5 of the table metric, but value is included in any associated total.",,,,,
+- = No data reported.,,,,,
+"Notes: Hydro Conventional does not include pumped storage. Other Biomass includes agricultural byproducts/crops, sludge waste and other biomass solids, liquids and gases. Solar includes solar thermal and photovoltaic. MSW = Municipal Solid Waste. MSW Biogenic includes paper and paper board, wood, food, leather, textiles and yard trimmings. Totals may not equal sum of components due to independent rounding.",,,,,
+"Sources: U.S. Energy Information Administration, Form EIA-923, ""Power Plant Operations Report,"" and predecessor forms.",,,,,

@@ -1,0 +1,24 @@
+﻿State Renewable Electricity Profiles 2010,,,,,
+Release Date: March 2012,,,,,
+Next Release Date: January 2013,,,,,
+,,,,,
+"Table 5. State Renewable Electric Power Industry Net Generation, by Energy Source, 2006 - 2010",,,,,
+(Thousand Megawatthours),,,,,
+,,,,,
+Missouri,,,,,
+,,,,,
+Energy Source,2006,2007,2008,2009,2010
+,,,,,
+Geothermal,-,-,-,-,-
+Hydro Conventional,199,"1,204","2,047","1,817","1,539"
+Solar,-,-,-,-,-
+Wind,-,-,203,499,925
+Wood/Wood Waste,s,s,2,2,s
+MSW Biogenic/Landfill Gas,15,22,30,50,58
+Other Biomass,9,7,11,24,4
+Total,223,"1,234","2,293","2,391","2,527"
+ ,,,,,
+"s = Value is less than 0.5 of the table metric, but value is included in any associated total.",,,,,
+- = No data reported.,,,,,
+"Notes: Hydro Conventional does not include pumped storage. Other Biomass includes agricultural byproducts/crops, sludge waste and other biomass solids, liquids and gases. Solar includes solar thermal and photovoltaic. MSW = Municipal Solid Waste. MSW Biogenic includes paper and paper board, wood, food, leather, textiles and yard trimmings. Totals may not equal sum of components due to independent rounding.",,,,,
+"Sources: U.S. Energy Information Administration, Form EIA-923, ""Power Plant Operations Report,"" and predecessor forms.",,,,,

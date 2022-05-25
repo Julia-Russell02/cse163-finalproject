@@ -1,0 +1,24 @@
+﻿State Renewable Electricity Profiles 2010,,,,,
+Release Date: March 2012,,,,,
+Next Release Date: January 2013,,,,,
+,,,,,
+"Table 5. State Renewable Electric Power Industry Net Generation, by Energy Source, 2006 - 2010",,,,,
+(Thousand Megawatthours),,,,,
+,,,,,
+Colorado,,,,,
+,,,,,
+Energy Source,2006,2007,2008,2009,2010
+,,,,,
+Geothermal,-,-,-,-,-
+Hydro Conventional,"1,791","1,730","2,039","1,886","1,578"
+Solar,-,2,18,26,42
+Wind,866,"1,292","3,221","3,164","3,452"
+Wood/Wood Waste,-,-,s,s,2
+MSW Biogenic/Landfill Gas,-,-,8,17,20
+Other Biomass,31,31,37,39,38
+Total,"2,687","3,054","5,324","5,132","5,133"
+ ,,,,,
+"s = Value is less than 0.5 of the table metric, but value is included in any associated total.",,,,,
+- = No data reported.,,,,,
+"Notes: Hydro Conventional does not include pumped storage. Other Biomass includes agricultural byproducts/crops, sludge waste and other biomass solids, liquids and gases. Solar includes solar thermal and photovoltaic. MSW = Municipal Solid Waste. MSW Biogenic includes paper and paper board, wood, food, leather, textiles and yard trimmings. Totals may not equal sum of components due to independent rounding.",,,,,
+"Sources: U.S. Energy Information Administration, Form EIA-923, ""Power Plant Operations Report,"" and predecessor forms.",,,,,

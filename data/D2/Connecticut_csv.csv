@@ -1,0 +1,24 @@
+﻿State Renewable Electricity Profiles 2010,,,,,
+Release Date: March 2012,,,,,
+Next Release Date: January 2013,,,,,
+,,,,,
+"Table 5. State Renewable Electric Power Industry Net Generation, by Energy Source, 2006 - 2010",,,,,
+(Thousand Megawatthours),,,,,
+,,,,,
+Connecticut,,,,,
+,,,,,
+Energy Source,2006,2007,2008,2009,2010
+,,,,,
+Geothermal,-,-,-,-,-
+Hydro Conventional,544,363,556,510,391
+Solar,-,-,-,-,-
+Wind,-,-,-,-,-
+Wood/Wood Waste,9,2,2,1,s
+MSW Biogenic/Landfill Gas,755,728,732,758,739
+Other Biomass,-,-,-,-,-
+Total,"1,307","1,093","1,290","1,268","1,130"
+ ,,,,,
+"s = Value is less than 0.5 of the table metric, but value is included in any associated total.",,,,,
+- = No data reported.,,,,,
+"Notes: Hydro Conventional does not include pumped storage. Other Biomass includes agricultural byproducts/crops, sludge waste and other biomass solids, liquids and gases. Solar includes solar thermal and photovoltaic. MSW = Municipal Solid Waste. MSW Biogenic includes paper and paper board, wood, food, leather, textiles and yard trimmings. Totals may not equal sum of components due to independent rounding.",,,,,
+"Sources: U.S. Energy Information Administration, Form EIA-923, ""Power Plant Operations Report,"" and predecessor forms.",,,,,

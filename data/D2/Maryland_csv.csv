@@ -1,0 +1,24 @@
+﻿State Renewable Electricity Profiles 2010,,,,,
+Release Date: March 2012,,,,,
+Next Release Date: January 2013,,,,,
+,,,,,
+"Table 5. State Renewable Electric Power Industry Net Generation, by Energy Source, 2006 - 2010",,,,,
+(Thousand Megawatthours),,,,,
+,,,,,
+Maryland,,,,,
+,,,,,
+Energy Source,2006,2007,2008,2009,2010
+,,,,,
+Geothermal,-,-,-,-,-
+Hydro Conventional,"2,104","1,652","1,974","1,889","1,667"
+Solar,-,-,-,-,s
+Wind,-,-,-,-,1
+Wood/Wood Waste,218,203,198,175,165
+MSW Biogenic/Landfill Gas,408,400,415,376,407
+Other Biomass,-,-,-,-,s
+Total,"2,730","2,256","2,587","2,440","2,241"
+ ,,,,,
+"s = Value is less than 0.5 of the table metric, but value is included in any associated total.",,,,,
+- = No data reported.,,,,,
+"Notes: Hydro Conventional does not include pumped storage. Other Biomass includes agricultural byproducts/crops, sludge waste and other biomass solids, liquids and gases. Solar includes solar thermal and photovoltaic. MSW = Municipal Solid Waste. MSW Biogenic includes paper and paper board, wood, food, leather, textiles and yard trimmings. Totals may not equal sum of components due to independent rounding.",,,,,
+"Sources: U.S. Energy Information Administration, Form EIA-923, ""Power Plant Operations Report,"" and predecessor forms.",,,,,
