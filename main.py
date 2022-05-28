@@ -1,10 +1,10 @@
+import idk
 import geopandas as gpd
 import pandas as pd
-import matplotlib.pyplot as plt
 
 
-def rq1():
-  pass
+def rq1(d1, d4):
+  print(d1.head())
 
 
 def rq2():
@@ -20,7 +20,9 @@ def rq4():
 
 
 def main():
-    rq1()
+    d1 = pd.read_csv("data/D1_model_state.csv")
+    d4 = pd.read_csv("data/D4_regions.csv")
+    rq1(d1, d4)
     rq2()
     rq3()
     rq4()
