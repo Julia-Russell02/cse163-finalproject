@@ -2,6 +2,9 @@ import geopandas as gpd
 import pandas as pd
 import matplotlib.pyplot as plt
 import os
+import seaborn as sns
+
+sns.set()
 
 
 def rq1():
@@ -14,6 +17,7 @@ def rq2():
 
 def ds2_process():
     state_avg_dic = {'State': [], 'Average': []}
+    # change path later
     directory = '/Users/jrussthebest/Documents/cse163-finalproject/data/D2'
     file_names = os.listdir(directory)
     for file_name in file_names:
@@ -36,11 +40,37 @@ def ds2_process():
     return pd.DataFrame.from_dict(state_avg_dic)
 
 
-
-
-
 def rq3():
-  pass
+    avg_renewables = ds2_process()
+    temp_change = ds1_process()
+    regions = ds4_process()
+
+    renewable_per_temp = avg_renewables.merge(temp_change, left_on='State', right_on='STATE_NAME')
+    renewable_per_temp.assign(energy_per_temp=lambda x: x.Average / x.Annual)
+
+    renewable_per_temp = renewable_per_temp.merge(regions, left_on='State', right_on='State')
+
+    sns.catplot(x='State', y='energy_per_temp', col='Region', kind='bar', data=renewable_per_temp)
+    plt.title('Amount of Renewable Energy Produced per Degree of Temperature Change')
+    plt.xlabel('State')
+    plt.ylabel('Energy Produced (in Thousand-Megawatt Hours)')
+    plt.savefig('renewable_energy_per_temp_change_48_states.png')
+
+    largest_temp_change = renewable_per_temp.nlargest(3, 'Annual')
+    largest_energy_per_temp = renewable_per_temp.nlargest(3, 'energy_per_temp')
+
+    fig, [ax1, ax2] = plt.subplots(ncols=2)
+    fig.subtitle('States with Highest Temperature Change vs States with'
+                 ' Highest Renewable Energy Production Per Degree of Temperature Change')
+
+    sns.catplot(ax=ax1, x='State', y='energy_per_temp', kind='bar', data=largest_temp_change)
+    ax1.set_title('Top 3 States with Highest Temperature Change')
+
+    sns.catplot(ax=ax2, x='State', y='energy_per_temp', kind='bar', data=largest_energy_per_temp)
+    ax2.set_title('Top 3 States With the Most Renewable Energy Produced per Degree of Temperature Change')
+
+    plt.xlabel('State')
+    plt.ylabel('Energy Produced (in Thousand-Megawatt Hours')
 
 
 def rq4():
@@ -53,7 +83,6 @@ def main():
     rq3()
     rq4()
     print(ds2_process())
-
 
 
 if __name__ == '__main__':
