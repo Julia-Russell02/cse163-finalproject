@@ -1,3 +1,6 @@
+import pandas as pd
+
+
 def ds2_process():
     state_avg_dic = {'State': [], 'Average': []}
     directory = 'data/D2'
