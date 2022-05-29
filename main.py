@@ -12,20 +12,20 @@ sns.set()
 
 
 def rq1(data):
-  # plot temp change by region
-  by_region = data.dissolve(by="Region")
-  fig, ax = plt.subplots(1)
-  by_region.plot(ax=ax, column='Annual',  cmap='Reds', legend=True)
-  plt.title('Average Annual Temperature Change by Region')
-  plt.savefig('rq1_map1.png')
-
-  # plot map: pop change(prop symbol) over temp change(choropleth)
-  fig, [ax1, ax2] = plt.subplots(2, figsize=(15, 10))
-  data.plot(ax=ax1, column='Annual',  cmap='Reds', legend=True)
-  ax1.set_title('Average Annual Temperature Change')
-  data.plot(ax=ax2, column='Percent Change in Resident Population', cmap='Reds', legend=True)
-  ax2.set_title('Average Percent Change in Population')
-  plt.savefig('rq1_map2.png')
+    # plot temp change by region
+    by_region = data.dissolve(by="Region")
+    fig, ax = plt.subplots(1)
+    by_region.plot(ax=ax, column='Annual',  cmap='Reds', legend=True)
+    plt.title('Average Percent Annual Temperature Change by Region')
+    plt.savefig('rq1_map1.png')
+    # plot map: pop change(prop symbol) over temp change(choropleth)
+    fig, [ax1, ax2] = plt.subplots(2, figsize=(15, 10))
+    data.plot(ax=ax1, column='Annual',  cmap='Reds', legend=True)
+    ax1.set_title('Average Percent Annual Temperature Change')
+    data.plot(ax=ax2, column='Percent Change in Resident Population', 
+              cmap='Reds', legend=True)
+    ax2.set_title('Average Percent Change in Population')
+    plt.savefig('rq1_map2.png')
 
 
 def rq2():
@@ -71,7 +71,7 @@ def rq4(ds1, ds2, ds3):
     state_location = ds3
 
     avg_renewable_temp_change = avg_renewables.merge(temp_change, left_on='State', right_on='STATE_NAME')
-    data_join3= avg_renewable_temp_change.merge(state_location, left_on='State', right_on='name')
+    data_join3 = avg_renewable_temp_change.merge(state_location, left_on='State', right_on='name')
 
     feature1 = data_join3.loc['Average']
     labels = data_join3['Annual']
