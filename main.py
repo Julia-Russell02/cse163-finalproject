@@ -33,12 +33,12 @@ def rq2(data):
     fig, [ax1, ax2] = plt.subplots(2, figsize=(15, 10))
     data.plot(ax=ax1, x='usa_state_latitude', y='Annual',
               kind='scatter', xlabel="Latitude",
-              ylabel="the average percent annual change in temperature")
+              ylabel="% Annual Temperature Change")
     ax1.set_title('Latitude vs annual temperature change')
     data = data.sort_values(by=['usa_state_longitude'], ascending=True)
     data.plot(ax=ax2, x='usa_state_longitude', y='Annual', 
               kind='scatter', xlabel="Longitude",
-              ylabel="the average percent annual change in temperature")
+              ylabel="% Annual Temperature Change")
     ax2.set_title('Longitude vs annual temperature change')
     plt.savefig('rq2.png')
 
@@ -125,6 +125,7 @@ def main():
     rq1(rq1_data)
     rq3(d1, d2, d4)
     rq4(d1, d2, d3)
+
     
 
 
