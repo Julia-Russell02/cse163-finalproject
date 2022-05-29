@@ -1,7 +1,10 @@
+from audioop import reverse
+import processing
+import pandas as pd
+import geopandas as gpd
 
 
 =======
-import pandas as pd
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
@@ -13,18 +16,56 @@ sns.set()
 
 
 
-def rq1(d1, d4):
-  print(d1.head())
+def rq1(data):
+  # plot temp change by region
+  by_region = data.dissolve(by="Region")
+  fig, ax = plt.subplots(1)
+  by_region.plot(ax=ax, column='Annual',  cmap='Reds', legend=True)
+  plt.title('Average Annual Temperature Change by Region')
+  plt.savefig('rq1_map1.png')
+
+  # plot map: pop change(prop symbol) over temp change(choropleth)
+  fig, [ax1, ax2] = plt.subplots(2, figsize=(15, 10))
+  data.plot(ax=ax1, column='Annual',  cmap='Reds', legend=True)
+  ax1.set_title('Average Annual Temperature Change')
+  data.plot(ax=ax2, column='Percent Change in Resident Population', cmap='Reds', legend=True)
+  ax2.set_title('Average Percent Change in Population')
+  plt.savefig('rq1_map2.png')
 
 
 def rq2():
   pass
 
 
-def rq3(ds1, ds2, ds4):
-    avg_renewables = ds2
-    temp_change = ds1
-    regions = ds4
+def ds2_process():
+    state_avg_dic = {'State': [], 'Average': []}
+    # change path later
+    directory = 'data/D2'
+    file_names = os.listdir(directory)
+    for file_name in file_names:
+        path = os.path.join(directory, file_name)
+        df = pd.read_csv(path)
+        df = df.dropna()
+        state = path[58:-8]
+        dfc = df.copy()
+
+        if state == 'Delaware':
+            dfc.loc[17, 'Unnamed: 1'] = 0
+
+        new_wanted = dfc.loc[17, 'Unnamed: 1':'Unnamed: 5'].str.replace(',', '')
+        new_wanted = new_wanted.dropna()
+        new_wanted = new_wanted.astype(int)
+        avg = new_wanted.sum() / 5
+        state_avg_dic['State'].append(state)
+        state_avg_dic['Average'].append(avg)
+
+    return pd.DataFrame.from_dict(state_avg_dic)
+
+
+def rq3():
+    avg_renewables = ds2_process()
+    temp_change = ds1_process()
+    regions = ds4_process()
 
     renewable_per_temp = avg_renewables.merge(temp_change, left_on='State', right_on='STATE_NAME')
     renewable_per_temp.assign(energy_per_temp=lambda x: x.Average / x.Annual)
@@ -88,10 +129,14 @@ def rq4(ds1, ds2, ds3):
 
 
 def main():
-    d1 = pd.read_csv("data/D1_model_state.csv")
-    d2 = ds2_process()
-    d4 = pd.read_csv("data/D4_regions.csv")
-    rq1(d1, d4)
+    rq1_data = processing.rq1_processing(
+      "data/D1_model_state.csv",
+      "data/D4_regions.csv",
+      "data/D6_population.csv",
+      "data/cb_2018_us_state_500k.shp"
+    )
+    rq1(rq1_data)
+
     rq2()
     rq3(d1, d2, d4)
     rq4(d1, d2, d3)

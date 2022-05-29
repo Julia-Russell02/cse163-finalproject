@@ -21,4 +21,3 @@ def ds2_process():
 
     return pd.DataFrame.from_dict(state_avg_dic)
 
-print("test")
