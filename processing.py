@@ -1,3 +1,4 @@
+from heapq import merge
 import pandas as pd
 import geopandas as gpd
 import os
@@ -49,6 +50,9 @@ def d2_process():
         state_avg_dic['Average'].append(avg)
     return pd.DataFrame.from_dict(state_avg_dic)
 
-def d3_processing():
-    d3 = pd.read_file(d3)
-    print(d3)
+
+def d2_process(d1, d3):
+    merged = d1.merge(d3, left_on='STUSAB', right_on='usa_state_code',
+                       how='left')
+    mask = merged[['Annual', 'usa_state_code', 'usa_state_latitude', 'usa_state_longitude']]
+    return mask

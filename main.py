@@ -28,8 +28,20 @@ def rq1(data):
     plt.savefig('rq1_map2.png')
 
 
-def rq2():
-  pass
+def rq2(data):
+    data = data.sort_values(by=['usa_state_latitude'], ascending=True)
+    fig, [ax1, ax2] = plt.subplots(2, figsize=(15, 10))
+    data.plot(ax=ax1, x='usa_state_latitude', y='Annual',
+              kind='scatter', xlabel="Latitude",
+              ylabel="the average percent annual change in temperature")
+    ax1.set_title('Latitude vs annual temperature change')
+    data = data.sort_values(by=['usa_state_longitude'], ascending=True)
+    data.plot(ax=ax2, x='usa_state_longitude', y='Annual', 
+              kind='scatter', xlabel="Longitude",
+              ylabel="the average percent annual change in temperature")
+    ax2.set_title('Longitude vs annual temperature change')
+    plt.savefig('rq2.png')
+
 
 
 def rq3(ds1, ds2, ds4):
@@ -99,19 +111,21 @@ def rq4(ds1, ds2, ds3):
 
 
 def main():
+    d1 = pd.read_csv('data/D1_model_state.csv')
+    d3 = pd.read_csv('data/D3_state_long_lat.csv')
     rq1_data = processing.rq1_processing(
       "data/D1_model_state.csv",
       "data/D4_regions.csv",
       "data/D6_population.csv",
       "data/cb_2018_us_state_500k.shp"
     )
-    d2 = processing.d2_process()
-    
-    d3 = processing.d3_processing()
+    df = processing.d2_process(d1, d3)
+    rq2(df)
+    d3 = processing.d3_process()
     rq1(rq1_data)
-    rq2(d3)
     rq3(d1, d2, d4)
     rq4(d1, d2, d3)
+    
 
 
 if __name__ == '__main__':
