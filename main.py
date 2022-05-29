@@ -2,18 +2,13 @@ from audioop import reverse
 import processing
 import pandas as pd
 import geopandas as gpd
-
-
-=======
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 import os
 import seaborn as sns
-
 sns.set()
-
 
 
 def rq1(data):
@@ -110,8 +105,9 @@ def main():
       "data/D6_population.csv",
       "data/cb_2018_us_state_500k.shp"
     )
+    d2 = processing.d2_process()
+    
     rq1(rq1_data)
-
     rq2()
     rq3(d1, d2, d4)
     rq4(d1, d2, d3)
