@@ -1,6 +1,10 @@
 
 
 =======
+import pandas as pd
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.metrics import mean_squared_error
+from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 import os
 import seaborn as sns
@@ -17,35 +21,10 @@ def rq2():
   pass
 
 
-def ds2_process():
-    state_avg_dic = {'State': [], 'Average': []}
-    # change path later
-    directory = '/Users/jrussthebest/Documents/cse163-finalproject/data/D2'
-    file_names = os.listdir(directory)
-    for file_name in file_names:
-        path = os.path.join(directory, file_name)
-        df = pd.read_csv(path)
-        df = df.dropna()
-        state = path[58:-8]
-        dfc = df.copy()
-
-        if state == 'Delaware':
-            dfc.loc[17, 'Unnamed: 1'] = 0
-
-        new_wanted = dfc.loc[17, 'Unnamed: 1':'Unnamed: 5'].str.replace(',', '')
-        new_wanted = new_wanted.dropna()
-        new_wanted = new_wanted.astype(int)
-        avg = new_wanted.sum() / 5
-        state_avg_dic['State'].append(state)
-        state_avg_dic['Average'].append(avg)
-
-    return pd.DataFrame.from_dict(state_avg_dic)
-
-
-def rq3():
-    avg_renewables = ds2_process()
-    temp_change = ds1_process()
-    regions = ds4_process()
+def rq3(ds1, ds2, ds4):
+    avg_renewables = ds2
+    temp_change = ds1
+    regions = ds4
 
     renewable_per_temp = avg_renewables.merge(temp_change, left_on='State', right_on='STATE_NAME')
     renewable_per_temp.assign(energy_per_temp=lambda x: x.Average / x.Annual)
@@ -75,18 +54,47 @@ def rq3():
     plt.ylabel('Energy Produced (in Thousand-Megawatt Hours')
 
 
-def rq4():
-  pass
+def rq4(ds1, ds2, ds3):
+    avg_renewables = ds2
+    temp_change = ds1
+    state_location = ds3
+
+    avg_renewable_temp_change = avg_renewables.merge(temp_change, left_on='State', right_on='STATE_NAME')
+    data_join3= avg_renewable_temp_change.merge(state_location, left_on='State', right_on='name')
+
+    feature1 = data_join3.loc['Average']
+    labels = data_join3['Annual']
+    feature1_train, feature1_test, labels1_train, labels1_test = train_test_split(feature1, labels, test_size=0.2)
+    model1 = DecisionTreeRegressor
+    model1.fit(feature1_train, labels1_train)
+    predictions1 = model1.predict(feature1_test)
+    error1 = mean_squared_error(labels1_test, predictions1)
+
+    feature2 = data_join3.loc[:, ['Average', 'latitude', 'longitude']]
+    feature2_train, feature2_test, labels2_train, labels2_test = train_test_split(feature2, labels, test_size=0.2)
+    model2 = DecisionTreeRegressor
+    model2.fit(feature2_train, labels2_train)
+    predictions2 = model2.predict(feature2_test)
+    error2 = mean_squared_error(labels2_test, predictions2)
+
+    feature3 = data_join3.loc[:, ['Latitude', 'Longitude']]
+    feature3_train, feature3_test, labels3_train, labels3_test = train_test_split(feature3, labels, test_size=0.2)
+    model3 = DecisionTreeRegressor
+    model2.fit(feature3_train)
+    predictions3 = model3.predict(feature3_test)
+    error3 = mean_squared_error(labels3_test, predictions3)
+
+    return error1, error2, error3
 
 
 def main():
     d1 = pd.read_csv("data/D1_model_state.csv")
+    d2 = ds2_process()
     d4 = pd.read_csv("data/D4_regions.csv")
     rq1(d1, d4)
     rq2()
-    rq3()
-    rq4()
-    print(ds2_process())
+    rq3(d1, d2, d4)
+    rq4(d1, d2, d3)
 
 
 if __name__ == '__main__':
