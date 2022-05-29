@@ -48,3 +48,7 @@ def d2_process():
         state_avg_dic['State'].append(state)
         state_avg_dic['Average'].append(avg)
     return pd.DataFrame.from_dict(state_avg_dic)
+
+def d3_processing():
+    d3 = pd.read_file(d3)
+    print(d3)

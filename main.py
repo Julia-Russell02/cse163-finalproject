@@ -107,8 +107,9 @@ def main():
     )
     d2 = processing.d2_process()
     
+    d3 = processing.d3_processing()
     rq1(rq1_data)
-    rq2()
+    rq2(d3)
     rq3(d1, d2, d4)
     rq4(d1, d2, d3)
 
