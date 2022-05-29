@@ -1,6 +1,7 @@
-
-
-=======
+from audioop import reverse
+import processing
+import pandas as pd
+import geopandas as gpd
 import matplotlib.pyplot as plt
 import os
 import seaborn as sns
@@ -9,8 +10,21 @@ sns.set()
 
 
 
-def rq1(d1, d4):
-  print(d1.head())
+def rq1(data):
+  # plot temp change by region
+  by_region = data.dissolve(by="Region")
+  fig, ax = plt.subplots(1)
+  by_region.plot(ax=ax, column='Annual',  cmap='Reds', legend=True)
+  plt.title('Average Annual Temperature Change by Region')
+  plt.savefig('rq1_map1.png')
+
+  # plot map: pop change(prop symbol) over temp change(choropleth)
+  fig, [ax1, ax2] = plt.subplots(2, figsize=(15, 10))
+  data.plot(ax=ax1, column='Annual',  cmap='Reds', legend=True)
+  ax1.set_title('Average Annual Temperature Change')
+  data.plot(ax=ax2, column='Percent Change in Resident Population', cmap='Reds', legend=True)
+  ax2.set_title('Average Percent Change in Population')
+  plt.savefig('rq1_map2.png')
 
 
 def rq2():
@@ -20,7 +34,7 @@ def rq2():
 def ds2_process():
     state_avg_dic = {'State': [], 'Average': []}
     # change path later
-    directory = '/Users/jrussthebest/Documents/cse163-finalproject/data/D2'
+    directory = 'data/D2'
     file_names = os.listdir(directory)
     for file_name in file_names:
         path = os.path.join(directory, file_name)
@@ -80,9 +94,14 @@ def rq4():
 
 
 def main():
-    d1 = pd.read_csv("data/D1_model_state.csv")
-    d4 = pd.read_csv("data/D4_regions.csv")
-    rq1(d1, d4)
+    rq1_data = processing.rq1_processing(
+      "data/D1_model_state.csv",
+      "data/D4_regions.csv",
+      "data/D6_population.csv",
+      "data/cb_2018_us_state_500k.shp"
+    )
+    rq1(rq1_data)
+
     rq2()
     rq3()
     rq4()
