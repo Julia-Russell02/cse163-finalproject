@@ -29,15 +29,19 @@ def rq1_processing(d1, d4, d6, shp_file):
     return filtered_data
 
 
-def d2_process():
+def ds1_process(path):
+  return pd.read_csv(path)
+
+
+def ds2_process():
     state_avg_dic = {'State': [], 'Average': []}
-    directory = 'data/D2'
+    directory = 'data/D2/'
     file_names = os.listdir(directory)
     for file_name in file_names:
         path = os.path.join(directory, file_name)
         df = pd.read_csv(path)
         df = df.dropna()
-        state = path[58:-8]
+        state = path[8:-8]
         dfc = df.copy()
         if state == 'Delaware':
             dfc.loc[17, 'Unnamed: 1'] = 0
@@ -49,6 +53,13 @@ def d2_process():
         state_avg_dic['Average'].append(avg)
     return pd.DataFrame.from_dict(state_avg_dic)
 
-def d3_processing():
-    d3 = pd.read_file(d3)
-    print(d3)
+
+def ds3_process(path):
+  return pd.read_csv(path)
+
+
+def ds4_process(path):
+    df = pd.read_csv(path)
+    return df.loc[:, ['State', 'Region']]
+
+
