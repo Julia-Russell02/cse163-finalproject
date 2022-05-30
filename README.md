@@ -1,5 +1,5 @@
 # cse 163 final project
-takumi shimada, owen Cheung, julia russell
+takumi shimada, owen cheung, julia russell
 ### research questions
 - how has the temperature changed in the us over time?
   - is there a correlation between population change and temperature change?
