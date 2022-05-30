@@ -63,3 +63,10 @@ def ds4_process(path):
     return df.loc[:, ['State', 'Region']]
 
 
+
+
+def rq2_process(d1, d3):
+    merged = d1.merge(d3, left_on='STUSAB', right_on='usa_state_code',
+                       how='left')
+    mask = merged[['Annual', 'usa_state_code', 'usa_state_latitude', 'usa_state_longitude']]
+    return mask
