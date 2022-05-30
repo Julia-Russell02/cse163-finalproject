@@ -127,12 +127,13 @@ def main():
       "data/cb_2018_us_state_500k.shp"
     )
 
-    #rq1(rq1_data)
+    rq1(rq1_data)
     d1 = processing.ds1_process("data/D1_model_state.csv")
     d2 = processing.ds2_process()
     d3 = processing.ds3_process('data/D3_state_long_lat.csv')
     d4 = processing.ds4_process("data/D4_regions.csv")
-    rq2()
+    rq2_data = processing.rq2_process(d1, d3)
+    rq2(rq2_data)
     rq3(d1, d2, d4)
     rq4(d1, d2, d3)
 
