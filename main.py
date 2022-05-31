@@ -42,7 +42,9 @@ def rq1(data):
 # research question 2
 def rq2(data):
     """
-    description for this method
+    This function takes the process data and creates a map which shows
+    the average percent annual change in temperature for the state by
+    latitude and longitude separetely.
     """
     data = data.sort_values(by=['usa_state_latitude'], ascending=True)
     fig, [ax1, ax2] = plt.subplots(2, figsize=(15, 10))
