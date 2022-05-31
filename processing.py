@@ -5,7 +5,7 @@ this program processes the data
 """
 
 
-#imports
+# imports
 import pandas as pd
 import geopandas as gpd
 import os
@@ -44,7 +44,7 @@ def rq1_processing(d1, d4, d6, shp_file):
 
 def rq2_process(d1, d3):
     """
-    this method merges datasets d1, and d3 to create a new 
+    this method merges datasets d1, and d3 to create a new
     filtered dataset for research question 2
     """
     merged = d1.merge(d3, left_on='STUSAB', right_on='usa_state_code',
