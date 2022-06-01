@@ -63,7 +63,8 @@ def ds1_process(path):
 
 def ds2_process():
     """
-    description for this method
+    Returns a DataFrame containing the average renewable energy each of the
+    lower 48 states produces from 2006 - 2010.
     """
     state_avg_dic = {'State': [], 'Average': []}
     directory = 'data/D2/'
@@ -95,7 +96,8 @@ def ds3_process(path):
 
 def ds4_process(path):
     """
-    description for this method
+    Returns a DataFrame that contains the 'State' and 'Region' columns of
+    dataset d4 from a given file path.
     """
     df = pd.read_csv(path)
     return df.loc[:, ['State', 'Region']]

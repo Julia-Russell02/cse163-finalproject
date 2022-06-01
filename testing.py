@@ -8,3 +8,10 @@ Testing file
 import pandas as pd
 import geopandas as gpd
 import os
+
+def ds2_test(path):
+    pass
+
+
+def energy_per_degree_test():
+    pass
