@@ -173,7 +173,7 @@ def rq4(ds1, ds2, ds3):
 def main():
     # data processing
     d1 = processing.ds1_process("data/D1_model_state.csv")
-    d2 = processing.ds2_process()
+    d2 = processing.ds2_process('data/D2/')
     d3 = processing.ds3_process('data/D3_state_long_lat.csv')
     d4 = processing.ds4_process("data/D4_regions.csv")
     rq1_data = processing.rq1_processing(
