@@ -17,3 +17,11 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
+def ds2_test(path):
+    pass
+
+
+def energy_per_degree_test():
+    pass
