@@ -28,10 +28,14 @@ def energy_per_degree_test():
     pass
 
 def testing_rq2_process(d1, d3):
-    assert_equals(Annual, usa_state_code  usa_state_latitude  usa_state_longitude
-"0  1.319880             AZ           34.048928          -111.093731
-1  1.480561             CA           36.778261          -119.417932
-2  1.438589             CO           39.550051          -105.782067)
+    expected_df = [
+        {'Annual': 1.319880, 'usa_state_code': "AZ",  'usa_state_latitude': 34.048928, 'usa_state_longitude': -111.093731},
+        {'Annual': 1.480561, 'usa_state_code': "CA",  'usa_state_latitude': 36.778261, 'usa_state_longitude': -119.417932},
+        {'Annual': 1.438589, 'usa_state_code': "CO",  'usa_state_latitude': 39.550051, 'usa_state_longitude': -105.782067}
+    ]
+    expected_df = pd.DataFrame(expected_df)
+    assert_equals(expected_df, processing.rq2_process(d1, d3))
+    
     
 
 if __name__ == '__main__':
