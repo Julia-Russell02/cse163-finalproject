@@ -32,7 +32,7 @@ def test_rq1_processing(data):
 
 def ds2_test(test_data):
     """
-    Tests the ds2_process() function from processing.py
+    tests the ds2_process() function from processing.py
     """
     # testing Montana average
     index = test_data[test_data['State'] == 'Montana'].index.values \
@@ -52,7 +52,7 @@ def ds2_test(test_data):
 
 def rq3_process_test(d1_test, d2_test, d4_test):
     """
-    Tests the rq3_process() function from processing.py
+    tests the rq3_process() function from processing.py
     """
     test_df = processing.rq3_process(d1_test, d2_test, d4_test)
     # testing Montana energy per degree of temp change
@@ -71,6 +71,9 @@ def rq3_process_test(d1_test, d2_test, d4_test):
 
 
 def testing_rq2_process(d1, d3):
+    """
+    this method tests the rq2_process() function from processing.py
+    """
     expected_df = [
         {'Annual': 1.319880, 'usa_state_code': "AZ",
          'usa_state_latitude': 34.048928, 'usa_state_longitude': -111.093731},
@@ -94,7 +97,9 @@ def main():
     test_rq1_processing(rq1_test_data)
     # testing rq2_process
     three_states = pd.read_csv("./testing data/Three_state.csv")
-    three_states_long_lat = pd.read_csv("./testing data/Three_states_long_lat.csv")
+    three_states_long_lat = pd.read_csv(
+        "./testing data/Three_states_long_lat.csv"
+    )
     testing_rq2_process(three_states, three_states_long_lat)
     # testing ds2_process() and rq3_process()
     ds2_test_data = processing.ds2_process('testing data/D2_test/')

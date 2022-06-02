@@ -30,7 +30,7 @@ def rq1(data):
     by_region.plot(ax=ax, column='Annual',  cmap='Reds', legend=True)
     plt.title('Average Percent Annual Temperature Change by Region')
     plt.savefig('rq1_map1.png')
-    # plot map: pop change(prop symbol) over temp change(choropleth)
+    # plot map: pop change vs temp change
     fig, [ax1, ax2] = plt.subplots(2, figsize=(15, 10))
     data.plot(ax=ax1, column='Annual',  cmap='Reds', legend=True)
     ax1.set_title('Average Percent Annual Temperature Change')
