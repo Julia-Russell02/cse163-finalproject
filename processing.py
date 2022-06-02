@@ -54,6 +54,19 @@ def rq2_process(d1, d3):
     return mask
 
 
+def rq3_process(d1, d2, d4):
+    """
+    method comment
+    """
+    d1 = d1.loc[:, ['Annual', 'STATE_NAME']]
+    d1['Annual'] = abs(d1['Annual'])
+    d1_d2_merge = d2.merge(d1, left_on='State', right_on='STATE_NAME')
+    d1_d2_merge = d1_d2_merge.assign(
+        energy_per_temp=lambda x: x.Average / x.Annual)
+    d1_d2_d4_merge = d1_d2_merge.merge(d4, left_on='State', right_on='State')
+    return d1_d2_d4_merge
+
+
 def ds1_process(path):
     """
     this method reads dataset d1 and returns it

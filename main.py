@@ -62,7 +62,7 @@ def rq2(data):
 
 
 # research question 3
-def rq3(ds1, ds2, ds4):
+def rq3(data):
     """
     plots 2 separate plots. the first plot contains 4 bar charts that
     represents the amount of renewable energy each state produces per absolute
@@ -74,21 +74,9 @@ def rq3(ds1, ds2, ds4):
     """
     # The amount of renewable energy each state produces per degree of
     # temperature change, separated by region,
-    avg_renewables = ds2
-    temp_change = ds1
-    temp_change = temp_change.loc[:, ['Annual', 'STATE_NAME']]
-    temp_change['Annual'] = abs(temp_change['Annual'])
-    regions = ds4
-    renewable_per_temp = avg_renewables.merge(temp_change, left_on='State',
-                                              right_on='STATE_NAME')
-    renewable_per_temp = renewable_per_temp.assign(
-        energy_per_temp=lambda x: x.Average / x.Annual
-    )
-    renewable_per_temp = renewable_per_temp.merge(regions, left_on='State',
-                                                  right_on='State')
     p = sns.catplot(x='State', y='energy_per_temp', col='Region',
                     col_wrap=2, sharex=False, sharey=False, kind='bar',
-                    data=renewable_per_temp, legend=True)
+                    data=data, legend=True)
     p.set_xticklabels(rotation=45, ha='right', fontsize=9)
     p.set_ylabels('Energy Produced (in Thousand-Megawatt Hours)')
     plt.tight_layout()
@@ -96,8 +84,8 @@ def rq3(ds1, ds2, ds4):
     # comparing the top 3 states with the highest temperature change with the
     # states with the top 3 states with the highest amount of renewable energy
     # produced per degree of change.
-    largest_temp_change = renewable_per_temp.nlargest(3, 'Annual')
-    largest_energy_per_temp = renewable_per_temp.nlargest(3, 'energy_per_temp')
+    largest_temp_change = data.nlargest(3, 'Annual')
+    largest_energy_per_temp = data.nlargest(3, 'energy_per_temp')
     fig, [ax1, ax2] = plt.subplots(ncols=2)
     sns.barplot(ax=ax1, x='State', y='energy_per_temp',
                 data=largest_temp_change)
@@ -184,10 +172,11 @@ def main():
       "data/cb_2018_us_state_500k.shp"
     )
     rq2_data = processing.rq2_process(d1, d3)
+    rq3_data = processing.rq3_process(d1, d2, d4)
     # analysis
     rq1(rq1_data)
     rq2(rq2_data)
-    rq3(d1, d2, d4)
+    rq3(rq3_data)
     print(rq4(d1, d2, d3))
 
 

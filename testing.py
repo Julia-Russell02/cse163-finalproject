@@ -30,24 +30,44 @@ def test_rq1_processing(data):
     assert_equals(1.319880, az_annual)
 
 
-def ds2_test():
-    ds2_test_data = processing.ds2_process('testing data/')
+def ds2_test(test_data):
+    """
+    Tests the ds2_process() function from processing.py
+    """
     # testing Montana average
-    index = ds2_test_data[ds2_test_data['State'] == 'Montana'].index.values.astype(int)
-    montana = ds2_test_data.loc[index[0], 'Average']
-    assert_equals(10400, montana)
+    index = test_data[test_data['State'] == 'Montana'].index.values \
+        .astype(int)
+    montana = test_data.loc[index[0], 'Average']
+    assert_equals(10440.0, montana)
     # testing South Dakota average
-    index = ds2_test_data[ds2_test_data['State'] == 'South Dakota'].index.values.astype(int)
-    south_dakota = ds2_test_data.loc[index[0], 'Average']
+    index = test_data[test_data['State'] == 'South Dakota'].index.values \
+        .astype(int)
+    south_dakota = test_data.loc[index[0], 'Average']
     assert_equals(4244.6, south_dakota)
     # testing Wyoming average
-    index = ds2_test_data[ds2_test_data['State'] == 'Wyoming'].index.value.astype(int)
-    wyoming = ds2_test_data.loc[index[0], 'Average']
+    index = test_data[test_data['State'] == 'Wyoming'].index.values.astype(int)
+    wyoming = test_data.loc[index[0], 'Average']
     assert_equals(2469.6, wyoming)
 
 
-def energy_per_degree_test():
-    pass
+def rq3_process_test(d1_test, d2_test, d4_test):
+    """
+    Tests the rq3_process() function from processing.py
+    """
+    test_df = processing.rq3_process(d1_test, d2_test, d4_test)
+    # testing Montana energy per degree of temp change
+    index = test_df[test_df['State'] == 'Montana'].index.values.astype(int)
+    montana = test_df.loc[index[0], 'energy_per_temp']
+    assert_equals(7346.291411, montana)
+    # testing South Dakota energy per degree of temp change
+    index = test_df[test_df['State'] == 'South Dakota'].index.values \
+        .astype(int)
+    south_dakota = test_df.loc[index[0], 'energy_per_temp']
+    assert_equals(3390.045469, south_dakota)
+    # testing Wyoming energy per degree of temp change
+    index = test_df[test_df['State'] == 'Wyoming'].index.values.astype(int)
+    wyoming = test_df.loc[index[0], 'energy_per_temp']
+    assert_equals(1636.846437, wyoming)
 
 
 def testing_rq2_process(d1, d3):
@@ -76,6 +96,12 @@ def main():
     three_states = pd.read_csv("./testing data/Three_state.csv")
     three_states_long_lat = pd.read_csv("./testing data/Three_states_long_lat.csv")
     testing_rq2_process(three_states, three_states_long_lat)
+    # testing ds2_process() and rq3_process()
+    ds2_test_data = processing.ds2_process('testing data/D2_test/')
+    ds2_test(ds2_test_data)
+    d1 = processing.ds1_process("data/D1_model_state.csv")
+    d4 = processing.ds4_process("data/D4_regions.csv")
+    rq3_process_test(d1, ds2_test_data, d4)
 
 
 if __name__ == '__main__':
