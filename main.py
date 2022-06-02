@@ -23,6 +23,7 @@ def rq1(data):
     change by region and another comparing percent change in resident
     population vs average percent annual temperature change
     """
+
     # plot temp change by region
     by_region = data.dissolve(by="Region")
     fig, ax = plt.subplots(1)
@@ -42,7 +43,7 @@ def rq1(data):
 # research question 2
 def rq2(data):
     """
-    This function takes the process data and creates a map which shows
+    this function takes the process data and creates a map which shows
     the average percent annual change in temperature for the state by
     latitude and longitude separately.
     """
@@ -63,12 +64,12 @@ def rq2(data):
 # research question 3
 def rq3(ds1, ds2, ds4):
     """
-    Plots 2 separate plots. The first plot contains 4 bar charts that
+    plots 2 separate plots. the first plot contains 4 bar charts that
     represents the amount of renewable energy each state produces per absolute
-    degree of temperature change. The states will be separated into 4 regions:
-    West, South, East, and Midwest. The second plot contains 2 bar charts. One
+    degree of temperature change. the states will be separated into 4 regions:
+    west, south, east, and midwest. the second plot contains 2 bar charts. one
     of the bar charts will represent the top 3 states with the highest
-    temperature change. The other bar char will contain the top 3 states with
+    temperature change. the other bar char will contain the top 3 states with
     the highest amount of renewable per degree of temperature change.
     """
     # The amount of renewable energy each state produces per degree of
@@ -120,13 +121,13 @@ def rq3(ds1, ds2, ds4):
 # research question 4
 def rq4(ds1, ds2, ds3):
     """
-    Returns a tuple containing 3 different errors of 3 corresponding regressor
+    returns a tuple containing 3 different errors of 3 corresponding regressor
     models, each with a different combination of features, that predict the
-    temperature change of a state. The first error in the tuple corresponds to
+    temperature change of a state. the first error in the tuple corresponds to
     the model that only has the amount of renewable energy a state produces as
-    a feature. The second error corresponds to the model that has both the
+    a feature. the second error corresponds to the model that has both the
     amount of renewable energy a state produces as a feature and its latitude
-    and longitude as features. The third error corresponds to the model that
+    and longitude as features. the third error corresponds to the model that
     only has the latitude and longitude as features.
     """
     avg_renewables = ds2
@@ -173,7 +174,7 @@ def rq4(ds1, ds2, ds3):
 def main():
     # data processing
     d1 = processing.ds1_process("data/D1_model_state.csv")
-    d2 = processing.ds2_process()
+    d2 = processing.ds2_process('data/D2/')
     d3 = processing.ds3_process('data/D3_state_long_lat.csv')
     d4 = processing.ds4_process("data/D4_regions.csv")
     rq1_data = processing.rq1_processing(

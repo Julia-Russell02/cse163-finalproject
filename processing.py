@@ -61,19 +61,19 @@ def ds1_process(path):
     return pd.read_csv(path)
 
 
-def ds2_process():
+def ds2_process(directory):
     """
-    Returns a DataFrame containing the average renewable energy each of the
+    returns a dataframe containing the average renewable energy each of the
     lower 48 states produces from 2006 - 2010.
     """
     state_avg_dic = {'State': [], 'Average': []}
-    directory = 'data/D2/'
     file_names = os.listdir(directory)
     for file_name in file_names:
         path = os.path.join(directory, file_name)
         df = pd.read_csv(path)
         df = df.dropna()
-        state = path[8:-8]
+        start = len(directory)
+        state = path[start:-8]
         dfc = df.copy()
         if state == 'Delaware':
             dfc.loc[17, 'Unnamed: 1'] = 0
@@ -96,7 +96,7 @@ def ds3_process(path):
 
 def ds4_process(path):
     """
-    Returns a DataFrame that contains the 'State' and 'Region' columns of
+    returns a dataframe that contains the 'state' and 'region' columns of
     dataset d4 from a given file path.
     """
     df = pd.read_csv(path)
