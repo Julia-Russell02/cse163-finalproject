@@ -6,7 +6,16 @@ takumi shimada, owen cheung, julia russell
 - does location affect temperature change?
 - what are the states with the temperature changing the most doing to combat climate change (in terms of generating renewable energy)?
 - is the amount of net generated renewable energy of a given state an accurate factor for predicting temperature change?
+### code libraries
+- pandas + geopandas
+- seaborn
+- matplotlib
+- scikit
+- os
 ### files
-- main.py - data visualization + analysis
-- processing.py - data processing
-- testing.py - testing code
+- main.py
+  - this file can be run to reproduce our data visulaization + analysis
+- processing.py
+  - this file cannot be run and contains the code used to process our data
+- testing.py
+  - this file can be run and contains the testing methods for our code
