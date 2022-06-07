@@ -14,7 +14,7 @@ takumi shimada, owen cheung, julia russell
 - os
 ### files
 - main.py
-  - this file can be run to reproduce our data visulaization + analysis
+  - this file can be run to reproduce our data visualization + analysis
 - processing.py
   - this file cannot be run and contains the code used to process our data
 - testing.py
