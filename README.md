@@ -19,3 +19,5 @@ takumi shimada, owen cheung, julia russell
   - this file cannot be run and contains the code used to process our data
 - testing.py
   - this file can be run and contains the testing methods for our code
+- cse163_utils.py
+  - this file contains the asset_equals() method used in testing.py
