@@ -16,7 +16,7 @@ takumi shimada, owen cheung, julia russell
 - main.py
   - this file can be run to reproduce our data visualization + analysis
 - processing.py
-  - this file cannot be run and contains the code used to process our data
+  - this file contains the code used to process our data
 - testing.py
   - this file can be run and contains the testing methods for our code
 - cse163_utils.py
